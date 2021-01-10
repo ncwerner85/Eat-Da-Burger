@@ -1,5 +1,5 @@
 // import ORM
-const orm = require("../config/orm.js");
+const orm = require("../config/orm");
 
 // burger model
 const burger = {

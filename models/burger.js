@@ -3,22 +3,23 @@ const orm = require("../config/orm");
 
 // burger model
 const burger = {
-	select: function(cb) {
-		orm.selectAll(function(response) {
-			cb(response);
-		});
-	},
-	insert: function(burgerName, cb) {
-		orm.insertOne(burgerName, function(response) {
-			cb(response);
-		});
-	},
-	update: function(burgerStatus, burgerId, cb) {
-		orm.updateOne(burgerStatus, burgerId, function(response) {
-			cb(response);
-		});
-	}
-}
+    selectAll: function(cb) {
+      orm.selectAll("burgers", function(res) {
+        cb(res);
+      });
+    },
+    // The variables cols and vals are arrays.
+    insertOne: function(cols, vals, cb) {
+      orm.insertOne("burgers", cols, vals, function(res) {
+        cb(res);
+      });
+    },
+    updateOne: function(objColVals, condition, cb) {
+      orm.updateOne("burgers", objColVals, condition, function(res) {
+        cb(res);
+      });
+    }
+  };
 
 // export burger model
 module.exports = burger;
